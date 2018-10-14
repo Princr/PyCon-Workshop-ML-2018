@@ -20,7 +20,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/portfolio', portfolioRouter);
+app.use('/portfolio', indexRouter);
+app.use('/portfolio/details', indexRouter);
 app.use('/services', indexRouter);
 app.use('/contact', indexRouter);
 app.use('/ccst', indexRouter);
