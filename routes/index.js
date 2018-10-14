@@ -10,6 +10,10 @@ router.get('/services', function(req, res, next) {
   res.render('service');
 });
 
+router.get('/ccst', function(req, res, next) {
+  res.render('ccst');
+});
+
 router.get('/contact', function(req, res, next) {
   res.render('contact');
 });

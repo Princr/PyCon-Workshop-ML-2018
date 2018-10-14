@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
-var ccstRouter = require('./routes/ccst');
+//var ccstRouter = require('./routes/ccst');
 var portfolioRouter = require('./routes/portfolio');
 
 var app = express();
@@ -24,7 +24,7 @@ app.use('/', indexRouter);
 app.use('/portfolio', portfolioRouter);
 app.use('/services', indexRouter);
 app.use('/contact', indexRouter);
-app.use('/ccst', ccstRouter);
+app.use('/ccst', indexRouter);
 
 
 
