@@ -25,6 +25,7 @@ app.use('/portfolio/details', indexRouter);
 app.use('/services', indexRouter);
 app.use('/contact', indexRouter);
 app.use('/ccst', indexRouter);
+app.use('/result', indexRouter);
 
 
 

@@ -21,23 +21,27 @@ router.get('/ccst', function(req, res, next) {
   res.render('ccst');
 });
 
-router.post('/ccst/:water/:cement/:fagg/:cagg/:sps/:bfurn/:fash/:day', function(req, res, next) {
-  var water = req.param.water;
-  var cement = req.param.cement;
-  var fagg = req.param.fagg;
-  var cagg = req.param.cagg;
-  var sps = req.param.sps;
-  var bfurn = req.param.bfurn;
-  var fash = req.param.fash;
-  var day = req.param.day;
+router.post('/ccst', function(req, res, next) {
+  var water = req.body.water;
+  var cement = req.body.cement;
+  var fagg = req.body.fagg;
+  var cagg = req.body.cagg;
+  var sps = req.body.sps;
+  var bfurn = req.body.bfurn;
+  var fash = req.body.fash;
+  var day = req.body.day;
 
   ml.mlmodel(water, cement, fagg, cagg, sps, bfurn, fash, day);
+  res.redirect('/result');
 });
 
 router.get('/cst', function(req, res, next) {
   res.render('cst');
 });
 
+router.get('/result', function(req, res, next) {
+  res.render('result');
+});
 router.get('/contact', function(req, res, next) {
   res.render('contact');
 });
