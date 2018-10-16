@@ -1,7 +1,6 @@
 import {PythonShell} from 'python-shell';
- 
-exports.mlmodel = function(a: number, b: number, c: number, d: number, e: number, f: number, g: number, h: number) {
-  let options = {
+
+let options = {
     mode: 'text',
     pythonPath: '',
     pythonOptions: ['-u'], // get print results in real-time
@@ -12,12 +11,5 @@ exports.mlmodel = function(a: number, b: number, c: number, d: number, e: number
     if (err) throw err;
     // results is an array consisting of messages collected during execution
     var ans = results;
-    console.log(ans);
+    return ans;
   });
-};
-
-
-
-
- 
-

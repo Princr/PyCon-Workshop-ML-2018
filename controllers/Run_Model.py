@@ -10,6 +10,8 @@ from tensorflow import keras
 import sys
 import json
 import os
+os.getcwd()
+os.listdir(os.getcwd())
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 tf.logging.set_verbosity(tf.logging.ERROR)
 
