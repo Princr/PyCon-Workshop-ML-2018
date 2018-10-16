@@ -1,7 +1,7 @@
 import {PythonShell} from 'python-shell';
  
 
-exports.mlmodel = function(a, b, c, d, e, f, g, h) {
+exports.mlmodel = function(a: number, b: number, c: number, d: number, e: number, f: number, g: number, h: number) {
   let options = {
     mode: 'text',
     pythonPath: '',
@@ -10,12 +10,18 @@ exports.mlmodel = function(a, b, c, d, e, f, g, h) {
     args: ['compile',a, b, c, d, e, f, g, h]
   };
   
-  return PythonShell.run('Run_Model.py', options, function (err, results) {
+  PythonShell.run('Run_Model.py', options, function (err: string, results: string) {
     if (err) throw err;
     // results is an array consisting of messages collected during execution
-    return( results);
+    var ans = results;
+  
   });
 
+  
 };
+
+
+
+
  
 

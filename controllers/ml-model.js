@@ -9,10 +9,12 @@ exports.mlmodel = function (a, b, c, d, e, f, g, h) {
         scriptPath: 'controllers',
         args: ['compile', a, b, c, d, e, f, g, h]
     };
-    return python_shell_1.PythonShell.run('Run_Model.py', options, function (err, results) {
+    python_shell_1.PythonShell.run('Run_Model.py', options, function (err, results) {
         if (err)
             throw err;
         // results is an array consisting of messages collected during execution
-        return (results);
+        var ans = results;
+        console.log(ans);
     });
+    return python_shell_1.PythonShell.arguments.results;
 };
