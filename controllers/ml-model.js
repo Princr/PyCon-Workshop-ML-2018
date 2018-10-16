@@ -14,7 +14,5 @@ exports.mlmodel = function (a, b, c, d, e, f, g, h) {
             throw err;
         // results is an array consisting of messages collected during execution
         var ans = results;
-        console.log(ans);
     });
-    return python_shell_1.PythonShell.arguments.results;
 };
