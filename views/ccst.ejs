@@ -144,39 +144,75 @@
                   </div>
                   
                   <div class="col-md-4 pd-2">
-                    <form action="/ccst/" method="post">
-                        <div class="form-group">
+                    <div class="form-header">
+                        <% if (Object.keys(errors).length === 0) { %>
+                            <h2>Send us a message</h2>
+                                <% } else { %>
+                                <h2 class="errors-heading">Oops, please correct the following:</h2>
+                                <ul class="errors-list">
+                                <% Object.values(errors).forEach(error => { %>
+                                    <li><%= error.msg %></li>
+                                    <% }) %>
+                                </ul>
+                        <% } %>
+                    </div>
+                    <form action="/ccst" method="post" nonvalidate>
+                        <div class="form-group <%= errors.water ? 'form-field-invalid' : '' %>">
                           <label for="exampleInputEmail1">Water</label>
                           <input type="number" class="form-control" id="waterInput" name="water" aria-describedby="emailHelp" placeholder="Enter Mass of Water">
+                          <% if (errors.water) { %>
+                            <div class="error"><%= errors.water.msg %></div>
+                          <% } %>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group <%= errors.cement ? 'form-field-invalid' : '' %>">
                           <label for="exampleInputPassword1">Cement</label>
                           <input type="number" class="form-control" id="cementInput" name="cement" placeholder="Enter Mass of Cement">
+                          <% if (errors.cement) { %>
+                            <div class="error"><%= errors.cement.msg %></div>
+                          <% } %>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group <%= errors.fagg ? 'form-field-invalid' : '' %>">
                             <label for="exampleInputPassword1">Fine Aggregator</label>
                             <input type="number" class="form-control" id="fineaggregateInput" name="fagg" placeholder="Enter Mass of Fine Aggregator">
+                            <% if (errors.fagg) { %>
+                                <div class="error"><%= errors.fagg.msg %></div>
+                              <% } %>
                           </div>
-                          <div class="form-group">
+                          <div class="form-group <%= errors.cagg ? 'form-field-invalid' : '' %>">
                             <label for="exampleInputPassword1">Coarse Aggregator</label>
                             <input type="number" class="form-control" id="coarseaggregateInput" name="cagg" placeholder="Enter Mass of Coarse Aggregator">
+                            <% if (errors.cagg) { %>
+                                <div class="error"><%= errors.cagg.msg %></div>
+                              <% } %>
                           </div>
-                          <div class="form-group">
+                          <div class="form-group <%= errors.sps ? 'form-field-invalid' : '' %>">
                             <label for="exampleInputPassword1">Superplasticizer</label>
                             <input type="number" class="form-control" id="superplasticizerInput" name="sps" placeholder="Enter Mass of Superplasticizer">
+                            <% if (errors.sps) { %>
+                                <div class="error"><%= errors.sps.msg %></div>
+                              <% } %>
                           </div>
-                          <div class="form-group">
+                          <div class="form-group <%= errors.bfurn ? 'form-field-invalid' : '' %>">
                             <label for="exampleInputPassword1">Blast Furnace Slag</label>
                             <input type="number" class="form-control" id="bfslagInput" name="bfurn" placeholder="Enter Mass of Blast Furnace Slag">
+                            <% if (errors.bfurn) { %>
+                                <div class="error"><%= errors.bfurn.msg %></div>
+                              <% } %>
                           </div>
-                          <div class="form-group">
+                          <div class="form-group <%= errors.fash ? 'form-field-invalid' : '' %>">
                             <label for="exampleInputPassword1">Fly Ash</label>
                             <input type="number" class="form-control" id="fashInput" name="fash" placeholder="Enter Mass of Fly Ash">
+                            <% if (errors.fash) { %>
+                                <div class="error"><%= errors.fash.msg %></div>
+                              <% } %>
                           </div>
-                          <div class="form-group">
+                          <div class="form-group <%= errors.day ? 'form-field-invalid' : '' %>">
                             <label for="exampleInputPassword1">Day</label>
                             <input type="number" class="form-control" id="daysInput" name="day" placeholder="Number of Day to Set">
-                          </div>
+                            <% if (errors.day) { %>
+                                <div class="error"><%= errors.day.msg %></div>
+                              <% } %>
+                        </div>
                         <button type="submit" class="btn btn-primary">Compute</button>
                       </form>
                   </div>
