@@ -18,26 +18,7 @@
         <!-- main css -->
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/responsive.css">
-        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.13.0"> </script>
-        <script>
-            // Notice there is no 'import' statement. 'tf' is available on the index-page
-            // because of the script tag above.
-      
-            
-            function compute (form) {
-                var model = tf.loadModel('./controllers/jsn-model.json');
-                var water = form.water.value;
-                var cement = form.cement.value;
-                var sps = form.sps.value;
-                var fagg = form.fagg.value;
-                var cagg = form.cagg.value;
-                var fash = form.fash.value;
-                var day = form.day.value;
-                var bfurn = form.bfurn.value;
-                console.log ("You typed: " + water);
-            }
-            
-          </script>
+        
     </head>
     <body>
         
@@ -141,26 +122,10 @@
                 <div class="row">
                   <div class="col-md-8">
                         <div class="col-lg-6 mt-4 ">
-                                <div class="success_img">
-                                    <img src="img/ai-medium.jpg" alt="">
-                                </div>
+                            <div class="success_img">
+                                <img src="img/ai-medium.jpg" alt="">
                             </div>
-                    <!--<div class="input-group mb-3 mt-4 ">
-                        <div class="input-group-prepend">
-                            <div class="mx-auto">
-                                
-                                <div >
-                                    <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
-                                </div>
-                            </div>
-                                
-                          
                         </div>
-                        <div class="custom-file">
-                          <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-                          <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                        </div>
-                    </div>-->
                     <div class="jumbotron mt-4"></div>
                   </div>
                   
@@ -207,13 +172,12 @@
                             <input type="number" class="form-control" id="daysInput" name="day" placeholder="Number of Day to Set">
                             
                         </div>
-                        <button type="submit" class="btn btn-primary" onClick="compute(this.form)">Compute</button>
+                        <button type="submit" id="find_ccst" class="btn btn-primary" >Compute</button>
                       </form>
                   </div>
                 </div>
               </div>
         </section>
-        
         <!--================CCST Model Test Area =================-->
         
         <!--================ start footer Area  =================-->	
@@ -294,11 +258,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 			</div>
         </footer>
 		<!--================ End footer Area  =================-->
-        
-        
-        
-        
-        
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="js/jquery-3.2.1.min.js"></script>
@@ -317,5 +276,46 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         <script src="vendors/popup/jquery.magnific-popup.min.js"></script>
         <script src="vendors/swiper/js/swiper.min.js"></script>
         <script src="js/theme.js"></script>
+        <script> 
+            $(function(){
+                var $water = $('#waterInput')
+                var $cement = $('#cementInput')
+                var $fagg = $('#fineaggregateInput')
+                var $cagg = $('#coarseaggregateInput')
+                var $sps = $('#superplasticizerInput')
+                var $bfurn = $('#bfslagInput')
+                var $fash = $('#fashInput')
+                var $day = $('#daysInput')
+                
+                $('#find_ccst').on('click', function(){
+
+                    var data = {
+                        cement: $cement,
+                        bfurn: $bfurn,
+                        fash: $fash,
+                        water: $water,
+                        sps: $sps,
+                        cagg: $cagg,
+                        fagg: $fagg,
+                        day: $day
+                    };
+
+                    $.ajax({
+                        type: "POST",
+                        url: 'localhost:8000/api/ccst',
+                        data: data,
+                        success: function(res) {
+                            console.log(res.result)
+                            alert('The Concrete Compressive Strength is : ' + res.result)
+                        },
+                        error: function(){
+                            alert('Can not Find Compressive Stregnth, please check your parameters')
+                        }
+
+                    }); 
+                })
+               
+            });
+          </script>
     </body>
 </html>

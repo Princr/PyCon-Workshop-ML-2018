@@ -23,13 +23,6 @@ router.get('/ccst', function(req, res, next) {
   res.render('ccst');
 });
 
-router.post('/ccst', function(req, res, next) {
-
-  var ans = ml.mlmodel(req.body.cement, req.body.bfurn, req.body.fash, req.body.water, req.body.sps, req.body.cagg, req.body.fagg, req.body.day );
-  
-  console.log(ans);
-  
-});
 
 router.get('/cst', function(req, res, next) {
   res.render('cst');
