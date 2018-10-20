@@ -20,6 +20,7 @@
     "promise": "^8.0.2",
     "python-shell": "^1.0.6",
     "readline-sync": "^1.4.9",
+    "request": "^2.88.0",
     "typescript": "^3.0.3"
   }
 }
