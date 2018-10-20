@@ -12,8 +12,7 @@ exports.mlmodel = function(a: number, b: number, c: number, d: number, e: number
     if (err) throw err;
     // results is an array consisting of messages collected during execution
     var ans = results;
-    
-    
+    console.log(ans)
   });
 };
 
